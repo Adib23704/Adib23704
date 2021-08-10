@@ -35,4 +35,4 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<img align="center" src="https://github-readme-stats.vercel.app/api?username=Adib23704&hide=prs,issues&count_private=true&show_icons=true&theme=tokyonight&title_color=007700&text_color=cccccc" alt="adib23704"/>
+<img align="center" src="https://github-readme-stats.vercel.app/api?username=Adib23704&hide=prs,issues&count_private=true&show_icons=true&hide_border=true&theme=tokyonight&title_color=007700&text_color=cccccc" alt="adib23704"/>
