@@ -32,4 +32,7 @@
   
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?langs_count=8&username=adib23704&show_icons=true&locale=en&layout=compact" alt="adib23704" /></p>  
 
-<img align="center" src="https://github-readme-stats.vercel.app/api?username=Adib23704&hide=prs,issues&count_private=true&show_icons=true&hide_border=true&theme=tokyonight&title_color=007700&text_color=cccccc" alt="adib23704"/>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<img align="center" src="https://github-readme-stats.vercel.app/api?username=Adib23704&hide=prs,issues&count_private=true&show_icons=true&theme=tokyonight&title_color=007700&text_color=cccccc" alt="adib23704"/>
