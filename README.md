@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Adib (Adib23704)</h1>  
-<h3 align="center">A passionate and small developer from Bangladesh.</h3>
+<h3 align="center">A passionate and small developer from Bangladesh <img src="https://discord.com/assets/9bed1a653d1ed1f2106c8b0eb13b6c43.svg" alt="bd" />.</h3>
 
 <p align="center"><img src="https://komarev.com/ghpvc/?username=adib23704&label=Profile%20views&color=0e75b6&style=flat" alt="adib23704" /> </p>  
   
