@@ -19,7 +19,7 @@
   
 - 👨‍💻 All of my projects can be found [**here**](https://github.com/Adib23704?tab=repositories).
   
-- 📫 How to reach me? [**Email**](https://adib23704.github.io/mail) or [**Discord**](https://adib23704.github.io/discord) or [**Facebook**](https://adib23704.github.io/facebook)
+- 📫 How to reach me? [**Email**](https://adib23704.tk/mail) or [**Discord**](https://adib23704.tk/discord) or [**Facebook**](https://adib23704.tk/facebook)
   
 <h3 align="left">Connect with me:</h3>  
 <p align="left">  
