@@ -75,8 +75,9 @@
 
 ###
 
-<div align="center"><img src="https://readme-jokes.vercel.app/api"></a><div align="center">
+<div align="center"><a href="https://discord.com/users/451657007791996929"><img src="https://lanyard.cnrad.dev/api/451657007791996929"  /></a></div>
 
+###
 
 <div align="center">
   <a href="https://open.spotify.com/user/31rec2wcuepkxf5zknmwopki5lfe">
