@@ -3,7 +3,7 @@
 ###
 
 <div align="center">
-  <img src="https://streak-stats.demolab.com?user=Adib23704&locale=en&mode=weekly&theme=nord&hide_border=true&border_radius=5&date_format=j M[ Y]" height="135" alt="streak graph"  />
+  <img src="https://myreadme.vercel.app/api/embed/Adib23704?panels=userstatistics,toprepositories,toplanguages,commitgraph" height="230" alt="streak graph"  />
 </div>
 
 ###
@@ -66,7 +66,6 @@
 
 ###
 
-<br clear="both">
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Adib23704/Adib23704/output/github-contribution-grid-snake-dark.svg" />
@@ -76,16 +75,11 @@
 
 ###
 
-<div align="center">
-  <img src="https://profile-counter.glitch.me/Adib23704/count.svg?"  />
-</div>
+<div align="center"><img src="https://readme-jokes.vercel.app/api"></a><div align="center">
 
-###
 
 <div align="center">
   <a href="https://open.spotify.com/user/31rec2wcuepkxf5zknmwopki5lfe">
     <img src="https://spotify-recently-played-readme.vercel.app/api?user=31rec2wcuepkxf5zknmwopki5lfe&count=5&unique=true" alt="Spotify recently played"  />
   </a>
 </div>
-
-###
