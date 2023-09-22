@@ -4,7 +4,6 @@
 
 <div align="center">
   <img src="https://streak-stats.demolab.com?user=Adib23704&locale=en&mode=weekly&theme=nord&hide_border=true&border_radius=5&date_format=j M[ Y]" height="135" alt="streak graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Adib23704&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=nord&hide_border=true&custom_title=Public Project Languages" height="135" alt="languages graph"  />
 </div>
 
 ###
@@ -81,7 +80,7 @@
 
 <div align="center">
   <a href="https://open.spotify.com/user/31rec2wcuepkxf5zknmwopki5lfe">
-    <img src="https://spotify-recently-played-readme.vercel.app/api?count=5&unique=true" alt="Spotify recently played"  />
+    <img src="https://spotify-recently-played-readme.vercel.app/api?user=31rec2wcuepkxf5zknmwopki5lfe&count=5&unique=true" alt="Spotify recently played"  />
   </a>
 </div>
 
