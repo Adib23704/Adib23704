@@ -2,7 +2,7 @@
 <h1>Hi 👋, I'm Adib</h1>
 <h3>An experienced Backend & Software Developer with a passion for coding and a strong background in C Family, NodeJS, JavaScript, Python, LUA, Web & API Dev.</h3>
 <img src="https://komarev.com/ghpvc/?username=Adib23704&label=Profile%20views&color=0e75b6&style=flat" alt="Adib23704" /><br>
-<img src="https://github-profile-trophy.vercel.app/?username=Adib23704&theme=gruvbox&title=MultiLanguage,Commits,Experience,Repositories,Stars,Issues,PullRequest" alt="Adib23704" /><br><br>
+<img src="https://github-profile-trophy.vercel.app/?username=Adib23704&theme=gruvbox&title=MultiLanguage,Commits,Experience,Repositories,Stars,Issues,PullRequest,Followers" alt="Adib23704" /><br><br>
 <a href = "mailto:adib23704@gmail.com"><img src="https://img.shields.io/badge/Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 <a href="https://discord.com/users/451657007791996929" target="_blank"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" target="_blank"></a>
 <a href="https://facebook.com/Adib23704" target="_blank"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" target="_blank"></a>
