@@ -37,7 +37,6 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><h2>📊Statistics</h3>
 <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Adib23704&show_icons=true&locale=en&theme=gruvbox&hide_border=true" alt="Adib23704" />
-<img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Adib23704&theme=gruvbox&hide_border=true" alt="Adib23704" />
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Adib23704&theme=gruvbox" height="180em" />
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Adib23704&theme=gruvbox" height="180em" />
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><h2>⚡Activity</h2>
