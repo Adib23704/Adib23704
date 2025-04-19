@@ -19,19 +19,19 @@
 
 ### Frontend  
 
-[![Skills](https://skillicons.dev/icons?i=js,html,css,react,nextjs,tailwind,bootstrap,electron&perline=4)]
+![Skills](https://skillicons.dev/icons?i=js,html,css,react,nextjs,tailwind,bootstrap,electron&perline=4)
 
 </td><td valign="top" align="center" width="33%">
 
 ### Backend  
 
-[![Skills](https://skillicons.dev/icons?i=js,ts,python,nodejs,mysql,expressjs,mongodb,nginx,nextjs,prisma,fastapi,postgresql&perline=4)]
+![Skills](https://skillicons.dev/icons?i=js,ts,python,nodejs,mysql,expressjs,mongodb,nginx,nextjs,prisma,fastapi,postgresql&perline=4)
 
 </td><td valign="top" align="center" width="33%">
 
 ### DevOps  
 
-[![Skills](https://skillicons.dev/icons?i=aws,gcp,azure,ubuntu,linux,git,bash,docker&perline=4)]
+![Skills](https://skillicons.dev/icons?i=aws,gcp,azure,ubuntu,linux,git,bash,docker&perline=4)
 
 </td></tr></table>
 
