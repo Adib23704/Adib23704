@@ -7,7 +7,7 @@
 <img src="https://komarev.com/ghpvc/?username=Adib23704&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views counter" /><br>
 <img src="https://github-profile-trophy.vercel.app/?username=Adib23704&theme=gruvbox&title=MultiLanguage,Commits,Experience,Repositories,Stars,Issues,PullRequest,Followers" alt="Profile trophy" />
 
-<h3><a href="https://adib23704.com" target="_blank">www.adib23704.com</a></h3>
+<h3><a href="https://adibdev.me" target="_blank">www.adibdev.me</a></h3>
 
 [![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:adib23704@gmail.com)
 [![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/adib23704)
