@@ -12,7 +12,7 @@
 [![Gmail](https://skillicons.dev/icons?i=gmail)](mailto:adib23704@gmail.com)
 [![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/adib23704)
 [![Discord](https://skillicons.dev/icons?i=discord)](https://discord.com/users/451657007791996929)
-[![Instagram](https://skillicons.dev/icons?i=instagram)](https://instagram.com/__azuree__)
+[![Instagram](https://skillicons.dev/icons?i=instagram)](https://instagram.com/___azuree___)
 
 <img src="https://raw.githubusercontent.com/Adib23704/Adib23704/f85f9642fb4357035d9201daf31e3e7c94ea28f4/assets/divider.gif" alt="Divider animation"><h2>⚙Tech Stack</h3>
 <table><tr><td valign="top" align="center" width="33%">
