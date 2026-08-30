@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg?v=1788094048">
-    <img alt="Adib23704's GitHub Profile README" src="light_mode.svg?v=1788094048">
+    <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg?v=1788094146">
+    <img alt="Adib23704's GitHub Profile README" src="light_mode.svg?v=1788094146">
   </picture>
 
   <p align="center">
