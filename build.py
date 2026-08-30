@@ -759,6 +759,20 @@ def format_duration(diff: float) -> str:
     return f"{diff:.4f} s" if diff > 1 else f"{diff * 1000:.2f} ms"
 
 
+def update_readme() -> None:
+    timestamp = int(time.time())
+    readme_content = f"""<a href="https://github.com/{USER_NAME}/{USER_NAME}">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg?v={timestamp}">
+    <img alt="{USER_NAME}'s GitHub Profile README" src="light_mode.svg?v={timestamp}">
+  </picture>
+</a>
+"""
+    readme_path = BASE_DIR / "README.md"
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(readme_content)
+
+
 def main() -> None:
     user_data, user_time = perf_counter(user_getter, USER_NAME)
     owner_id = user_data[0].get("id")
@@ -806,6 +820,7 @@ def main() -> None:
         total_loc[:3],
         highlights_data,
     )
+    update_readme()
 
     total_time = (
         user_time
