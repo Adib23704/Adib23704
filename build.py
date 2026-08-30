@@ -59,9 +59,9 @@ TECH_STACK: List[Dict[str, str]] = [
 
 FEATURED_REPOSITORIES: List[Union[str, Dict[str, str]]] = [
     "https://github.com/Adib23704/Tuya-Smart-Taskbar",
-    "https://github.com/Adib23704/completeDiscordQuest-Vencord",
-    "https://github.com/Adib23704/autoReactor-Vencord",
-    "https://github.com/Adib23704/devCompanionExtended-Vencord",
+    "https://github.com/Adib23704/MoodTunes",
+    "https://github.com/Adib23704/MetaPeek",
+    "https://github.com/Adib23704/FlowTrack",
 ]
 
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN", "").strip()
@@ -89,7 +89,6 @@ def query_count(funct_id: str) -> None:
 def post_graphql(
     query: str, variables: Dict[str, Any], retries: int = 4
 ) -> Optional[requests.Response]:
-    """Execute a GraphQL query against GitHub's API with exponential backoff for transient errors."""
     if not ACCESS_TOKEN:
         return None
 
@@ -129,12 +128,10 @@ def simple_request(
     if res is not None and res.status_code == 200:
         return res
     status = res.status_code if res is not None else "No Token / Error"
-    print(f"   [Notice] {func_name} GraphQL request ({status})")
     return res
 
 
 def find_and_replace(root: etree._Element, element_id: str, new_text: str) -> None:
-    """Finds an SVG element by its ID and updates its text content."""
     element = root.find(f".//*[@id='{element_id}']")
     if element is not None:
         element.text = str(new_text)
@@ -149,7 +146,6 @@ def format_field_row(
     val_id: str,
     total_width: int,
 ) -> None:
-    """Formats a key-value row with leader dots to fit the exact column width."""
     prefix = f". {label}"
     val_str = str(value)
     gap = total_width - len(prefix) - len(val_str)
@@ -163,7 +159,6 @@ def format_field_row(
 def format_dots_value(
     root: etree._Element, label: str, element_id: str, value: Any, total_width: int = 57
 ) -> None:
-    """Formats single element values (e.g. Uptime, Stars, Commits) with leader dots."""
     val_str = f"{value:,}" if isinstance(value, int) else str(value)
     gap = total_width - len(label) - len(val_str)
     dots = " " * max(0, gap) if gap <= 2 else " " + ("." * (gap - 2)) + " "
@@ -178,7 +173,6 @@ def render_proficiency_item(
     bar_len: int = 16,
     bar_start_col: int = 32,
 ) -> Dict[str, str]:
-    """Dynamically calculates ASCII progress bar blocks and leader dots for a skill."""
     name = str(item.get("name", ""))
     level = int(item.get("level", 0))
 
@@ -204,7 +198,6 @@ def render_proficiency_item(
 
 
 def parse_repo_link(link: Union[str, Dict[str, str]]) -> Tuple[str, str]:
-    """Extracts (owner, repo_name) from URL or dictionary."""
     if isinstance(link, dict):
         link = link.get("url", "")
     match = re.search(r"github\.com/([^/]+)/([^/]+)", str(link))
@@ -217,7 +210,6 @@ def parse_repo_link(link: Union[str, Dict[str, str]]) -> Tuple[str, str]:
 
 
 def get_languages_for_repo(owner: str, repo_name: str) -> List[str]:
-    """Fetches all languages used in a repository in order of byte size."""
     query = """
     query ($owner: String!, $name: String!) {
         repository(owner: $owner, name: $name) {
@@ -254,7 +246,6 @@ def get_languages_for_repo(owner: str, repo_name: str) -> List[str]:
 
 
 def format_languages(langs: List[str], max_len: int = 28) -> str:
-    """Packs languages separated by commas so they never exceed the max column width."""
     if not langs:
         return "Dev"
     for count in range(len(langs), 0, -1):
@@ -267,7 +258,6 @@ def format_languages(langs: List[str], max_len: int = 28) -> str:
 def highlights_getter(
     repo_links: List[Union[str, Dict[str, str]]],
 ) -> List[Dict[str, Any]]:
-    """Fetches repository names and language tags for featured repositories."""
     results = []
     for item in repo_links[:4]:
         custom_lang = item.get("lang") if isinstance(item, dict) else None
@@ -292,7 +282,6 @@ def highlights_getter(
 
 
 def daily_readme(birthday: datetime.datetime) -> str:
-    """Returns the live time duration since birthday (e.g. '22 years, 1 month, 7 days')."""
     diff = relativedelta.relativedelta(datetime.datetime.today(), birthday)
     plural = lambda n: "s" if n != 1 else ""
     bday_emoji = " 🎂" if (diff.months == 0 and diff.days == 0) else ""
@@ -311,8 +300,20 @@ def user_getter(username: str) -> Tuple[Dict[str, str], str]:
     req = simple_request(user_getter.__name__, query, {"login": username})
     if req and req.status_code == 200:
         data = req.json().get("data", {}).get("user", {})
-        return {"id": data.get("id", "")}, data.get("createdAt", "")
-    return {"id": ""}, "2020-01-01T00:00:00Z"
+        return {"id": data.get("id", "")}, data.get("createdAt", "2019-02-20T19:16:01Z")
+
+    try:
+        res = requests.get(
+            f"https://api.github.com/users/{username}", headers=HEADERS, timeout=10
+        )
+        if res.status_code == 200:
+            data = res.json()
+            return {"id": data.get("node_id", "")}, data.get(
+                "created_at", "2019-02-20T19:16:01Z"
+            )
+    except Exception:
+        pass
+    return {"id": ""}, "2019-02-20T19:16:01Z"
 
 
 def follower_getter(username: str) -> int:
@@ -328,14 +329,22 @@ def follower_getter(username: str) -> int:
     try:
         req = simple_request(follower_getter.__name__, query, {"login": username})
         if req and req.status_code == 200:
-            count = req.json().get("data", {}).get("user", {}).get("followers", {}).get("totalCount")
+            count = (
+                req.json()
+                .get("data", {})
+                .get("user", {})
+                .get("followers", {})
+                .get("totalCount")
+            )
             if count is not None:
                 return int(count)
     except Exception:
         pass
 
     try:
-        res = requests.get(f"https://api.github.com/users/{username}", headers=HEADERS, timeout=10)
+        res = requests.get(
+            f"https://api.github.com/users/{username}", headers=HEADERS, timeout=10
+        )
         if res.status_code == 200:
             return int(res.json().get("followers", 25))
     except Exception:
@@ -343,7 +352,9 @@ def follower_getter(username: str) -> int:
     return 25
 
 
-def graph_repos_stars(count_type: str, owner_affiliation: List[str], cursor: Optional[str] = None) -> int:
+def graph_repos_stars(
+    count_type: str, owner_affiliation: List[str], cursor: Optional[str] = None
+) -> int:
     query_count("graph_repos_stars")
     query = """
     query ($owner_affiliation: [RepositoryAffiliation], $login: String!, $cursor: String) {
@@ -365,9 +376,19 @@ def graph_repos_stars(count_type: str, owner_affiliation: List[str], cursor: Opt
         }
     }"""
     try:
-        req = simple_request(graph_repos_stars.__name__, query, {"owner_affiliation": owner_affiliation, "login": USER_NAME, "cursor": cursor})
+        req = simple_request(
+            graph_repos_stars.__name__,
+            query,
+            {
+                "owner_affiliation": owner_affiliation,
+                "login": USER_NAME,
+                "cursor": cursor,
+            },
+        )
         if req and req.status_code == 200:
-            repos_data = req.json().get("data", {}).get("user", {}).get("repositories", {})
+            repos_data = (
+                req.json().get("data", {}).get("user", {}).get("repositories", {})
+            )
             if count_type == "repos":
                 return int(repos_data.get("totalCount", 0))
             elif count_type == "stars":
@@ -380,27 +401,32 @@ def graph_repos_stars(count_type: str, owner_affiliation: List[str], cursor: Opt
         pass
 
     try:
-        res = requests.get(f"https://api.github.com/users/{USER_NAME}/repos?per_page=100&type=all", headers=HEADERS, timeout=10)
+        res = requests.get(
+            f"https://api.github.com/users/{USER_NAME}/repos?per_page=100&type=all",
+            headers=HEADERS,
+            timeout=10,
+        )
         if res.status_code == 200:
             repos = res.json()
             if count_type == "repos":
                 return len(repos)
             elif count_type == "stars":
-                return sum(r.get("stargazers_count", 0) for r in repos if isinstance(r, dict))
+                return sum(
+                    r.get("stargazers_count", 0) for r in repos if isinstance(r, dict)
+                )
     except Exception:
         pass
-    return 39 if count_type == "repos" else 22
+    return 104 if count_type == "repos" else 22
 
 
 def commit_counter(comment_size: int = 7) -> int:
-    """Reads total commits from the persistent SHA256 cache file."""
     cache_path = (
         BASE_DIR
         / "cache"
         / f"{hashlib.sha256(USER_NAME.encode('utf-8')).hexdigest()}.txt"
     )
     if not cache_path.is_file():
-        return 1250
+        return 2860
 
     total = 0
     try:
@@ -411,18 +437,13 @@ def commit_counter(comment_size: int = 7) -> int:
             if len(parts) >= 3 and parts[2].isdigit():
                 total += int(parts[2])
     except Exception:
-        return 1250
-    return total if total > 0 else 1250
+        return 2860
+    return total if total > 0 else 2860
 
 
 def recursive_loc(
     owner: str,
     repo_name: str,
-    data: List[str],
-    cache_comment: List[str],
-    addition_total: int = 0,
-    deletion_total: int = 0,
-    my_commits: int = 0,
     cursor: Optional[str] = None,
     owner_id: Optional[str] = None,
 ) -> Tuple[int, int, int]:
@@ -448,7 +469,7 @@ def recursive_loc(
                             }
                             pageInfo {
                                 endCursor
-                                haNextPage: hasNextPage
+                                hasNextPage
                             }
                         }
                     }
@@ -456,42 +477,38 @@ def recursive_loc(
             }
         }
     }"""
-    req = post_graphql(
-        query, {"repo_name": repo_name, "owner": owner, "cursor": cursor}
-    )
-    if req and req.status_code == 200:
-        branch_ref = (
-            req.json().get("data", {}).get("repository", {}).get("defaultBranchRef")
+    additions = 0
+    deletions = 0
+    my_commits = 0
+    curr_cursor = cursor
+
+    while True:
+        req = post_graphql(
+            query, {"repo_name": repo_name, "owner": owner, "cursor": curr_cursor}
         )
-        if branch_ref:
-            history = branch_ref.get("target", {}).get("history", {})
-            for edge in history.get("edges", []):
-                node = edge.get("node", {})
-                author_user = node.get("author", {}).get("user", {})
-                if owner_id and author_user and author_user.get("id") == owner_id:
-                    my_commits += 1
-                    addition_total += node.get("additions", 0)
-                    deletion_total += node.get("deletions", 0)
-            if history.get("pageInfo", {}).get("haNextPage"):
-                return recursive_loc(
-                    owner,
-                    repo_name,
-                    data,
-                    cache_comment,
-                    addition_total,
-                    deletion_total,
-                    my_commits,
-                    history["pageInfo"]["endCursor"],
-                    owner_id,
-                )
-            return addition_total, deletion_total, my_commits
-    return addition_total, deletion_total, my_commits
+        if not req or req.status_code != 200:
+            break
+        repo_data = req.json().get("data", {}).get("repository")
+        if not repo_data or not repo_data.get("defaultBranchRef"):
+            break
+        history = repo_data["defaultBranchRef"]["target"]["history"]
+        for edge in history.get("edges", []):
+            node = edge.get("node", {})
+            user_ref = node.get("author", {}).get("user")
+            if owner_id and user_ref and user_ref.get("id") == owner_id:
+                my_commits += 1
+                additions += node.get("additions", 0)
+                deletions += node.get("deletions", 0)
+        if history.get("pageInfo", {}).get("hasNextPage"):
+            curr_cursor = history["pageInfo"]["endCursor"]
+        else:
+            break
+    return additions, deletions, my_commits
 
 
 def loc_query(
     owner_affiliation: List[str], comment_size: int = 7, owner_id: Optional[str] = None
 ) -> List[Any]:
-    """Queries repository lines of code differences using cached state."""
     cache_dir = BASE_DIR / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
     filename = (
@@ -499,13 +516,14 @@ def loc_query(
     )
 
     if not ACCESS_TOKEN:
-        return [150000, 20000, 130000, True]
+        return [8135255, 2582616, 5552639, True]
 
     query_count("loc_query")
-    query = """
-    query ($owner_affiliation: [RepositoryAffiliation], $login: String!, $cursor: String) {
-        user(login: $login) {
-            repositories(first: 60, after: $cursor, ownerAffiliations: $owner_affiliation) {
+    query = (
+        """
+    query ($cursor: String) {
+        user(login: "%s") {
+            repositories(first: 60, after: $cursor, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]) {
                 edges {
                     node {
                         nameWithOwner
@@ -527,42 +545,87 @@ def loc_query(
             }
         }
     }"""
-    req = simple_request(
-        "loc_query",
-        query,
-        {"owner_affiliation": owner_affiliation, "login": USER_NAME, "cursor": None},
+        % USER_NAME
     )
-    if not req or req.status_code != 200:
-        return [150000, 20000, 130000, True]
 
-    edges = [
-        e
-        for e in req.json()
-        .get("data", {})
-        .get("user", {})
-        .get("repositories", {})
-        .get("edges", [])
-        if e.get("node")
-    ]
+    edges = []
+    cursor = None
+    while True:
+        req = post_graphql(query, {"cursor": cursor})
+        if not req or req.status_code != 200:
+            break
+        data = req.json().get("data", {}).get("user", {}).get("repositories", {})
+        edges.extend([e for e in data.get("edges", []) if e.get("node")])
+        if data.get("pageInfo", {}).get("hasNextPage"):
+            cursor = data["pageInfo"]["endCursor"]
+        else:
+            break
 
+    if not edges:
+        return [8135255, 2582616, 5552639, True]
+
+    return cache_builder(edges, filename, comment_size, owner_id)
+
+
+def cache_builder(
+    edges: List[Any], filename: Path, comment_size: int, owner_id: Optional[str]
+) -> List[Any]:
+    cached = True
     try:
         with open(filename, "r", encoding="utf-8") as f:
-            lines = f.readlines()
+            data = f.readlines()
     except FileNotFoundError:
-        lines = [f"Comment block line {i}\n" for i in range(comment_size)]
+        data = [f"Comment line {i}\n" for i in range(comment_size)]
+        with open(filename, "w", encoding="utf-8") as f:
+            f.writelines(data)
 
-    cache_comment = lines[:comment_size]
-    data = lines[comment_size:]
+    cache_comment = data[:comment_size]
+    data = data[comment_size:]
+
+    cache_map = {}
+    for line in data:
+        parts = line.split()
+        if len(parts) >= 5:
+            cache_map[parts[0]] = parts
+
+    new_data = []
+    for edge in edges:
+        name_with_owner = edge["node"]["nameWithOwner"]
+        repo_hash = hashlib.sha256(name_with_owner.encode("utf-8")).hexdigest()
+        branch = edge["node"].get("defaultBranchRef")
+
+        if not branch:
+            new_data.append(f"{repo_hash} 0 0 0 0\n")
+            continue
+
+        total_branch_commits = branch["target"]["history"]["totalCount"]
+
+        if (
+            repo_hash in cache_map
+            and int(cache_map[repo_hash][1]) == total_branch_commits
+        ):
+            new_data.append(" ".join(cache_map[repo_hash]) + "\n")
+        else:
+            cached = False
+            owner, repo_name = name_with_owner.split("/")
+            adds, dels, my_c = recursive_loc(owner, repo_name, owner_id=owner_id)
+            new_data.append(
+                f"{repo_hash} {total_branch_commits} {my_c} {adds} {dels}\n"
+            )
+
+    with open(filename, "w", encoding="utf-8") as f:
+        f.writelines(cache_comment)
+        f.writelines(new_data)
 
     loc_add = 0
     loc_del = 0
-    for line in data:
+    for line in new_data:
         parts = line.split()
         if len(parts) >= 5:
             loc_add += int(parts[3])
             loc_del += int(parts[4])
 
-    return [loc_add or 150000, loc_del or 20000, (loc_add - loc_del) or 130000, True]
+    return [loc_add, loc_del, loc_add - loc_del, cached]
 
 
 def svg_overwrite(
@@ -697,11 +760,6 @@ def format_duration(diff: float) -> str:
 
 
 def main() -> None:
-    if not ACCESS_TOKEN:
-        print(
-            "💡 [Notice] Running without ACCESS_TOKEN. Using fallback / cached metrics."
-        )
-
     user_data, user_time = perf_counter(user_getter, USER_NAME)
     owner_id = user_data[0].get("id")
     print(f"   ✓ User Account:       {format_duration(user_time)}")
@@ -712,7 +770,8 @@ def main() -> None:
     total_loc, loc_time = perf_counter(
         loc_query, ["OWNER", "COLLABORATOR", "ORGANIZATION_MEMBER"], 7, owner_id
     )
-    print(f"   ✓ Lines of Code:      {format_duration(loc_time)}")
+    cache_status = "(cached)" if total_loc[-1] else "(fresh)"
+    print(f"   ✓ Lines of Code {cache_status}: {format_duration(loc_time)}")
 
     commit_data, commit_time = perf_counter(commit_counter, 7)
     star_data, star_time = perf_counter(graph_repos_stars, "stars", ["OWNER"])
@@ -758,8 +817,8 @@ def main() -> None:
         + contrib_time
         + hl_time
     )
-    print(f"\nDashboards updated successfully! Total time: {total_time:.4f}s")
-    print(f"Total GitHub GraphQL API calls: {sum(QUERY_COUNT.values())}\n")
+    print(f"\n✨ Dashboards updated successfully! Total time: {total_time:.4f}s")
+    print(f"📡 Total GitHub GraphQL API calls: {sum(QUERY_COUNT.values())}\n")
 
 
 if __name__ == "__main__":
