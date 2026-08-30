@@ -71,7 +71,7 @@ text, tspan {white-space: pre;}
   <!-- Section: Live GitHub Stats (57 chars wide) -->
   <tspan x="510" y="226" class="header">adib@zahindev</tspan><tspan class="cc"> -—</tspan><tspan class="key"> Live GitHub Stats </tspan><tspan class="cc">—————————————————–-—-</tspan>
   
-  <tspan x="510" y="248" class="cc">. </tspan><tspan class="key">Repositories</tspan><tspan class="cc" id="repo_data_dots"> ..................... </tspan><tspan class="value" id="repo_data">41</tspan><tspan class="cc"> {</tspan><tspan class="key">Contributed</tspan><tspan class="cc">: </tspan><tspan class="value" id="contrib_data">41</tspan><tspan class="cc">}</tspan>
+  <tspan x="510" y="248" class="cc">. </tspan><tspan class="key">Repositories</tspan><tspan class="cc" id="repo_data_dots"> .................... </tspan><tspan class="value" id="repo_data">97</tspan><tspan class="cc"> {</tspan><tspan class="key">Contributed</tspan><tspan class="cc">: </tspan><tspan class="value" id="contrib_data">104</tspan><tspan class="cc">}</tspan>
   <tspan x="510" y="270" class="cc">. </tspan><tspan class="key">Total Stars</tspan><tspan class="cc" id="star_data_dots"> ........................................ </tspan><tspan class="value" id="star_data">22</tspan>
   <tspan x="510" y="292" class="cc">. </tspan><tspan class="key">Total Commits</tspan><tspan class="cc" id="commit_data_dots"> ................................... </tspan><tspan class="value" id="commit_data">1,250</tspan>
   <tspan x="510" y="314" class="cc">. </tspan><tspan class="key">Followers</tspan><tspan class="cc" id="follower_data_dots"> .......................................... </tspan><tspan class="value" id="follower_data">25</tspan>
