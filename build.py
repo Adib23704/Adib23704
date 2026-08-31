@@ -59,9 +59,9 @@ TECH_STACK: List[Dict[str, str]] = [
 
 FEATURED_REPOSITORIES: List[Union[str, Dict[str, str]]] = [
     "https://github.com/Adib23704/Tuya-Smart-Taskbar",
+    "https://github.com/Adib23704/QueryGuard",
     "https://github.com/Adib23704/MoodTunes",
-    "https://github.com/Adib23704/MetaPeek",
-    "https://github.com/Adib23704/FlowTrack",
+    "https://github.com/Adib23704/MetaPeek"
 ]
 
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN", "").strip()
