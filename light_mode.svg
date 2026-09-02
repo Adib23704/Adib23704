@@ -28,7 +28,7 @@ text, tspan {white-space: pre;}
   <tspan x="25" y="32" class="header">adib@zahindev</tspan><tspan class="cc"> -—</tspan><tspan class="key"> System Info </tspan><tspan class="cc">—————————————————————————-—-</tspan>
   
   <tspan x="25" y="54" class="cc">. </tspan><tspan class="key" id="sys_label_0">OS</tspan><tspan class="cc" id="sys_dots_0"> .......................... </tspan><tspan class="value" id="sys_val_0">Windows 11, Ubuntu Linux</tspan>
-  <tspan x="25" y="76" class="cc">. </tspan><tspan class="key">Uptime</tspan><tspan class="cc" id="age_data_dots"> ..................... </tspan><tspan class="value" id="age_data">22 years, 1 month, 9 days</tspan>
+  <tspan x="25" y="76" class="cc">. </tspan><tspan class="key">Uptime</tspan><tspan class="cc" id="age_data_dots"> .................... </tspan><tspan class="value" id="age_data">22 years, 1 month, 10 days</tspan>
   <tspan x="25" y="98" class="cc">. </tspan><tspan class="key" id="sys_label_1">Role</tspan><tspan class="cc" id="sys_dots_1"> ............. </tspan><tspan class="value" id="sys_val_1">Backend-focused Full-Stack Engineer</tspan>
   <tspan x="25" y="120" class="cc">. </tspan><tspan class="key" id="sys_label_2">Location</tspan><tspan class="cc" id="sys_dots_2"> ........................... </tspan><tspan class="value" id="sys_val_2">Dhaka, Bangladesh</tspan>
   <tspan x="25" y="142" class="cc">. </tspan><tspan class="key" id="sys_label_3">Education</tspan><tspan class="cc" id="sys_dots_3"> ......... </tspan><tspan class="value" id="sys_val_3">B.Sc. in CSE, East West University</tspan>
